@@ -23,29 +23,26 @@ The following example sets the page's title and description using Razor.
 
 `Pages/ControlHeadContent.razor`:
 
-```razor
-@page "/control-head-content"
+[!code-razor[](~/blazor/samples/6.0/BlazorSample_WebAssembly/Pages/control-head-content/ControlHeadContent.razor?highlight=13,15-17)]
 
-<h1>Control &lt;head&gt; content</h1>
+## Control head content during prerendering
 
-<p>
-    Title: @title
-</p>
+*This section applies to prerendered Blazor WebAssembly apps and Blazor Server apps.*
 
-<p>
-    Description: @description
-</p>
+When [Razor components are prerendered](xref:blazor/components/prerendering-and-integration), the use of a layout page (`_Layout.cshtml`) is required to control head (`<head>`) content with the <xref:Microsoft.AspNetCore.Components.Web.PageTitle> and <xref:Microsoft.AspNetCore.Components.Web.HeadContent> components. The reason for this requirement is that components that control head content must be rendered before the layout with the <xref:Microsoft.AspNetCore.Components.Web.HeadOutlet> component. **This order of rendering is required to control head content.**
 
-<PageTitle>@title</PageTitle>
+If the shared `_Layout.cshtml` file doesn't have a [Component Tag Helper](xref:mvc/views/tag-helpers/builtin-th/component-tag-helper) for a <xref:Microsoft.AspNetCore.Components.Web.HeadOutlet> component, add it to the `<head>` elements.
 
-<HeadContent>
-    <meta name="description" content="@description">
-</HeadContent>
+In a **required**, shared `_Layout.cshtml` file of a Blazor Server app or Razor Pages/MVC app that embeds components into pages or views:
 
-@code {
-    private string description = "Description set by component";
-    private string title = "Title set by component";
-}
+```cshtml
+<component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
+```
+
+In a **required**, shared `_Layout.cshtml` file of a prerendered hosted Blazor WebAssembly app:
+
+```cshtml
+<component type="typeof(HeadOutlet)" render-mode="WebAssemblyPrerendered" />
 ```
 
 ## `HeadOutlet` component
@@ -81,9 +78,11 @@ In Blazor apps created from Blazor project templates, the `NotFound` component t
 
 ## Additional resources
 
+* [Control headers in C# code at startup](xref:blazor/fundamentals/startup#control-headers-in-c-code)
+
 Mozilla MDN Web Docs documentation:
 
 * [What's in the head? Metadata in HTML](https://developer.mozilla.org/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML)
-* [\<head>: The Document Metadata (Header) element](https://developer.mozilla.org/docs/Web/HTML/Element/head)
-* [\<title>: The Document Title element](https://developer.mozilla.org/docs/Web/HTML/Element/title)
-* [\<meta>: The metadata element](https://developer.mozilla.org/docs/Web/HTML/Element/meta)
+* [`<head>`: The Document Metadata (Header) element](https://developer.mozilla.org/docs/Web/HTML/Element/head)
+* [`<title>`: The Document Title element](https://developer.mozilla.org/docs/Web/HTML/Element/title)
+* [`<meta>`: The metadata element](https://developer.mozilla.org/docs/Web/HTML/Element/meta)

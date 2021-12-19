@@ -54,19 +54,7 @@ The following `HelloWorld` component uses a route template of `/hello-world`. Th
 
 The preceding component loads in the browser at `/hello-world` regardless of whether or not you add the component to the app's UI navigation. Optionally, components can be added to the `NavMenu` component so that a link to the component appears in the app's UI-based navigation.
 
-For the preceding `HelloWorld` component, add the following `NavLink` component to the `NavMenu` component. Add the `NavLink` component in a new list item (`<li>...</li>`) between the unordered list tags (`<ul>...</ul>`).
-
-`Shared/NavMenu.razor`:
-
-```razor
-<li class="nav-item px-3">
-    <NavLink class="nav-link" href="hello-world">
-        <span class="oi oi-list-rich" aria-hidden="true"></span> Hello World!
-    </NavLink>
-</li>
-```
-
-For more information, including descriptions of the `NavLink` and `NavMenu` components, see <xref:blazor/fundamentals/routing>.
+For the preceding `HelloWorld` component, you can add a `NavLink` component to the `NavMenu` component in the `Shared` folder. For more information, including descriptions of the `NavLink` and `NavMenu` components, see <xref:blazor/fundamentals/routing>.
 
 ### Markup
 
@@ -170,32 +158,11 @@ The following `Counter` component splits HTML and Razor markup from  C# code usi
 
 `Pages/CounterPartialClass.razor`:
 
-```razor
-@page "/counter-partial-class"
-
-<h1>Counter</h1>
-
-<p>Current count: @currentCount</p>
-
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
-```
+[!code-razor[](~/blazor/samples/6.0/BlazorSample_WebAssembly/Pages/index/CounterPartialClass.razor)]
 
 `Pages/CounterPartialClass.razor.cs`:
 
-```csharp
-namespace BlazorSample.Pages
-{
-    public partial class CounterPartialClass
-    {
-        private int currentCount = 0;
-
-        void IncrementCount()
-        {
-            currentCount++;
-        }
-    }
-}
-```
+[!code-csharp[](~/blazor/samples/6.0/BlazorSample_WebAssembly/Pages/index/CounterPartialClass.razor.cs)]
 
 [`@using`][2] directives in the `_Imports.razor` file are only applied to Razor files (`.razor`), not C# files (`.cs`). Add namespaces to a partial class file as needed.
 
@@ -318,7 +285,7 @@ To obtain a value for the `Title` parameter in the preceding example asynchronou
 <ParameterChild Title="@title" />
 
 @code {
-    private string title;
+    private string? title;
     
     protected override async Task OnInitializedAsync()
     {
@@ -380,14 +347,14 @@ Apply the [`[EditorRequired]` attribute](xref:Microsoft.AspNetCore.Components.Ed
 ```csharp
 [Parameter]
 [EditorRequired]
-public string Title { get; set; }
+public string? Title { get; set; }
 ```
 
 Single-line attribute lists are also supported:
 
 ```csharp
 [Parameter, EditorRequired]
-public string Title { get; set; }
+public string? Title { get; set; }
 ```
 
 ## Route parameters
@@ -546,7 +513,7 @@ To accept arbitrary attributes, define a [component parameter](#component-parame
 ```razor
 @code {
     [Parameter(CaptureUnmatchedValues = true)]
-    public Dictionary<string, object> InputAttributes { get; set; }
+    public Dictionary<string, object>? InputAttributes { get; set; }
 }
 ```
 
@@ -983,7 +950,7 @@ The following example demonstrates:
     private string message = "Lorem ipsum dolor sit amet, consectetur adipiscing " +
         "elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 
-    private string value;
+    private string? value;
 }
 ```
 
@@ -1148,19 +1115,7 @@ The following `HelloWorld` component uses a route template of `/hello-world`. Th
 
 The preceding component loads in the browser at `/hello-world` regardless of whether or not you add the component to the app's UI navigation. Optionally, components can be added to the `NavMenu` component so that a link to the component appears in the app's UI-based navigation.
 
-For the preceding `HelloWorld` component, add the following `NavLink` component to the `NavMenu` component. Add the `NavLink` component in a new list item (`<li>...</li>`) between the unordered list tags (`<ul>...</ul>`).
-
-`Shared/NavMenu.razor`:
-
-```razor
-<li class="nav-item px-3">
-    <NavLink class="nav-link" href="hello-world">
-        <span class="oi oi-list-rich" aria-hidden="true"></span> Hello World!
-    </NavLink>
-</li>
-```
-
-For more information, including descriptions of the `NavLink` and `NavMenu` components, see <xref:blazor/fundamentals/routing>.
+For the preceding `HelloWorld` component, you can add a `NavLink` component to the `NavMenu` component in the `Shared` folder. For more information, including descriptions of the `NavLink` and `NavMenu` components, see <xref:blazor/fundamentals/routing>.
 
 ### Markup
 
@@ -2099,19 +2054,7 @@ The following `HelloWorld` component uses a route template of `/hello-world`. Th
 
 The preceding component loads in the browser at `/hello-world` regardless of whether or not you add the component to the app's UI navigation. Optionally, components can be added to the `NavMenu` component so that a link to the component appears in the app's UI-based navigation.
 
-For the preceding `HelloWorld` component, add the following `NavLink` component to the `NavMenu` component. Add the `NavLink` component in a new list item (`<li>...</li>`) between the unordered list tags (`<ul>...</ul>`).
-
-`Shared/NavMenu.razor`:
-
-```razor
-<li class="nav-item px-3">
-    <NavLink class="nav-link" href="hello-world">
-        <span class="oi oi-list-rich" aria-hidden="true"></span> Hello World!
-    </NavLink>
-</li>
-```
-
-For more information, including descriptions of the `NavLink` and `NavMenu` components, see <xref:blazor/fundamentals/routing>.
+For the preceding `HelloWorld` component, you can add a `NavLink` component to the `NavMenu` component in the `Shared` folder. For more information, including descriptions of the `NavLink` and `NavMenu` components, see <xref:blazor/fundamentals/routing>.
 
 ### Markup
 
